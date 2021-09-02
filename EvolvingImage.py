@@ -5,7 +5,7 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 class EvolvingImage:
-    def __init__(self,referenceImgPath,imgDim=(30,30),populationSize=30,crossoverRate=0.5,mutationRate=0.03):
+    def __init__(self,referenceImgPath,imgDim=(15,15),populationSize=100,crossoverRate=0.5,mutationRate=0.03):
         self.imgDim = imgDim
         self.populationSize = populationSize
         self.population = [random.randint(0,2,imgDim[0]*imgDim[1]) for i in range(populationSize)]
@@ -52,6 +52,7 @@ class EvolvingImage:
 
     def breed(self):
         matingPool = self.getMatingPool()
+        matingPool[0]=self.topPerformer
         poolSize = len(matingPool)
         nextGeneration = []
         for i in range(self.populationSize//2):
@@ -66,11 +67,12 @@ class EvolvingImage:
         for i in tqdm(range(n)):
             self.breed()
     
+    def displayRecord(self):
+        plt.plot(self.fitnessRecord)
+        plt.title("Training Results")
+        plt.xlabel("Generation Number")
+        plt.ylabel("Fitness")
+        plt.show()
+
         
-# test = EvolvingImage("mickeyMouse.jpg")
-# test.n_Steps(10000)
-# plt.plot(test.fitnessRecord)
-# plt.show()
-# # img = Image.fromarray(np.reshape(test.topPerformer*255,test.imgDim))
-# # img = img.resize((1000,1000))
-# # img.show()
+
