@@ -1,12 +1,12 @@
 #%%
 import numpy as np
 from numpy import random
-from PIL import Image
+from PIL import Image,ImageFilter
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 #%%
 class EvolvingImage:
-    def __init__(self,referenceImgPath,imgDim=(30,30),populationSize=200,crossoverRate=0.5,mutationRate=0.005,crossoverPercentLength=0.05,selectionMethod="tournament"):
+    def __init__(self,referenceImgPath,imgDim=(30,30),populationSize=200,crossoverRate=0.3,mutationRate=0.005,crossoverPercentLength=0.2,selectionMethod="tournament"):
         self.imgDim = imgDim
         self.populationSize = populationSize
         self.population = [random.randint(0,2,imgDim[0]*imgDim[1]) for i in range(populationSize)]
@@ -97,7 +97,7 @@ class EvolvingImage:
 #%%
 
 test = EvolvingImage("mickeyMouse.jpg")
-test.n_Steps(3000)
+test.n_Steps(5000)
 test.displayRecord()
 Image.fromarray(np.reshape(test.topPerformer*255,test.imgDim)).resize((1000,1000)).show()
 Image.fromarray(test.referenceImgArray*255).resize((1000,1000)).show()
