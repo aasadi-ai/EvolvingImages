@@ -1,10 +1,9 @@
-#%%
 import numpy as np
 from numpy import random
 from PIL import Image
 from tqdm import tqdm
 import matplotlib.pyplot as plt
-#%%
+
 class EvolvingImage:
     '''This class contains all the necessary functions to implement a Genetic Algorithm.'''
     def __init__(self,referenceImgPath,imgDim=(30,30),populationSize=200,crossoverRate=0.3,mutationRate=0.005,crossoverPercentLength=0.2,selectionMethod="tournament"):
@@ -108,10 +107,3 @@ class EvolvingImage:
         '''Displays individual with the highest fitness'''
         Image.fromarray(np.reshape(self.topPerformer*255,self.imgDim)).resize((1000,1000)).show()
 
-#%%
-test = EvolvingImage("mickeyMouse.jpg")
-test.n_Steps(5000)
-test.displayRecord()
-test.referenceImg()
-test.topPerformerImg()
-# %%
