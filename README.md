@@ -1,6 +1,6 @@
 # Evolving Mickey Mouse:
 
-This project contains the implementation of the Genetic Algorithm (GA) discussed in my article [Evolving Mickey Mouse](https://joooyz.medium.com/8-reinforcement-learning-project-ideas-3521e0ccd313).
+This project contains the implementation of the Genetic Algorithm (GA) discussed in my article [Evolving Mickey Mouse](https://medium.com/@ahmedasadi.ai/evolving-mickey-mouse-c8542e4541c3).
 
 ### File Structure:
 **EvolvingImage.py:** This file contains the class-based implementation of the GA, and takes as input the path to an image file and an optional set of hyperparameter values.
